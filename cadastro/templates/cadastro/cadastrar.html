@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cadastro de Pessoas</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        form {
+            margin-bottom: 20px;
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 6px #ccc;
+            max-width: 300px;
+        }
+        input, button {
+            padding: 8px;
+            margin: 5px 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+            max-width: 400px;
+        }
+        li {
+            background: white;
+            margin-bottom: 8px;
+            padding: 10px 15px;
+            border-radius: 6px;
+            box-shadow: 0 0 4px #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        a {
+            color: #e74c3c;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cadastro de Pessoas</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Cadastrar</button>
+    </form>
+
+    <h2>Lista de Pessoas:</h2>
+    <ul>
+        {% for pessoa in pessoas %}
+            <li>
+                {{ pessoa.nome }} - {{ pessoa.idade }} anos
+                <a href="{% url 'excluir_pessoa' pessoa.id %}">[Excluir]</a>
+            </li>
+        {% empty %}
+            <li>Nenhuma pessoa cadastrada ainda.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
