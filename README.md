@@ -10,7 +10,7 @@ Este é um projeto simples de cadastro de usuários desenvolvido com Django, cri
 - CSS
 - SQLite (banco de dados padrão do Django)
 - Git & GitHub
-- Replit (ambiente de desenvolvimento)
+- Replit (ambiente de desenvolvimento mobile)
 
 ## 📌 Funcionalidades
 
